@@ -1,0 +1,53 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '-t', 'gcr.io/$PROJECT_ID/my-app:$COMMIT_SHA',
+      '-t', 'gcr.io/$PROJECT_ID/my-app:latest',
+      '.'
+    ]
+    timeout: '1200s'
+
+  # Step 2: Push the image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/my-app:$COMMIT_SHA']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/my-app:latest']
+
+  # Step 3: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args: [
+      'run', 'deploy', 'my-app',
+      '--image', 'gcr.io/$PROJECT_ID/my-app:$COMMIT_SHA',
+      '--region', 'us-central1',
+      '--platform', 'managed',
+      '--allow-unauthenticated',
+      '--port', '8080',
+      '--memory', '512Mi',
+      '--cpu', '1',
+      '--max-instances', '10',
+      '--set-env-vars', 'NODE_ENV=production',
+      '--set-cloudsql-instances', '$PROJECT_ID:us-central1:my-db-instance'
+    ]
+
+# Build options
+options:
+  machineType: 'E2_HIGHCPU_8'
+  diskSizeGb: '100'
+  logging: 'CLOUD_LOGGING_ONLY'
+
+# Build timeout
+timeout: '1800s'
+
+# Substitutions
+substitutions:
+  _REGION: 'us-central1'
+  _SERVICE_NAME: 'my-app'
+
+# Images to be pushed to Container Registry
+images:
+  - 'gcr.io/$PROJECT_ID/my-app:$COMMIT_SHA'
+  - 'gcr.io/$PROJECT_ID/my-app:latest'
