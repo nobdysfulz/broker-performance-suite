@@ -4,12 +4,11 @@ FROM node:18
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and install
-COPY package*.json ./
-RUN npm install
-
-# Copy all app files
+# Copy full source files
 COPY . .
+
+# Install dependencies
+RUN npm install
 
 # Expose port
 EXPOSE 8080
