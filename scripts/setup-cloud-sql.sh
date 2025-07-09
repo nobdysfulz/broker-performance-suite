@@ -5,7 +5,7 @@
 
 set -e
 
-PROJECT_ID=${1:-"your-project-id"}
+PROJECT_ID=${1:-"broker-performance-suite"}
 REGION=${2:-"us-central1"}
 INSTANCE_NAME="my-db-instance"
 DATABASE_NAME="myapp_db"
