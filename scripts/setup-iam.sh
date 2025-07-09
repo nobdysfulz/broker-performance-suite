@@ -5,7 +5,7 @@
 
 set -e
 
-PROJECT_ID=${1:-"your-project-id"}
+PROJECT_ID=${1:-"broker-performance-suite"}
 SERVICE_ACCOUNT_NAME="my-app-service-account"
 SERVICE_ACCOUNT_EMAIL="$SERVICE_ACCOUNT_NAME@$PROJECT_ID.iam.gserviceaccount.com"
 
