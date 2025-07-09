@@ -7,9 +7,9 @@ set -e
 
 PROJECT_ID=${1:-"broker-performance-suite"}
 REGION=${2:-"us-central1"}
-INSTANCE_NAME="my-db-instance"
-DATABASE_NAME="myapp_db"
-DB_USER="app_user"
+INSTANCE_NAME="bps-postgres"
+DATABASE_NAME="bps"
+DB_USER="postgres"
 
 echo "🗄️  Setting up Cloud SQL PostgreSQL instance..."
 
