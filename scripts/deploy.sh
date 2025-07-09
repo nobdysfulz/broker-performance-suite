@@ -5,9 +5,9 @@
 
 set -e
 
-PROJECT_ID=${1:-"your-project-id"}
+PROJECT_ID=${1:-"broker-performance-suite"}
 REGION=${2:-"us-central1"}
-SERVICE_NAME="my-app"
+SERVICE_NAME="bps-backend"
 
 echo "🚀 Starting complete deployment to Google Cloud..."
 echo "📝 Project: $PROJECT_ID"
