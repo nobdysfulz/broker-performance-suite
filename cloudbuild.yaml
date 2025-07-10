@@ -46,3 +46,7 @@ timeout: '1800s'
 images:
   - 'gcr.io/broker-performance-suite/my-app:$COMMIT_SHA'
   - 'gcr.io/broker-performance-suite/my-app:latest'
+
+substitutions:
+  _REGION: 'us-central1'
+  _SERVICE_NAME: 'broker-performance-suite'
