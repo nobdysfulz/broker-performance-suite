@@ -45,7 +45,7 @@ timeout: '1800s'
 # Substitutions
 substitutions:
   _REGION: 'us-central1'
-  _SERVICE_NAME: 'my-app'
+  _SERVICE_NAME: 'bps-backend'
 
 # Images to be pushed to Container Registry
 images:
