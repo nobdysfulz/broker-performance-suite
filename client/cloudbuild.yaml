@@ -29,6 +29,7 @@ steps:
       '--set-env-vars', 'NODE_ENV=production'
     ]
 
+
 options:
   machineType: 'E2_HIGHCPU_8'
   diskSizeGb: '100'
@@ -39,3 +40,6 @@ timeout: '1800s'
 images:
   - 'gcr.io/broker-performance-suite/my-app:$COMMIT_SHA'
   - 'gcr.io/broker-performance-suite/my-app:latest'
+
+
+cd ../server && npm install --package-lock-only
