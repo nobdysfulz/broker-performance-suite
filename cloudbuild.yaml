@@ -42,11 +42,6 @@ options:
 # Build timeout
 timeout: '1800s'
 
-# Substitutions
-substitutions:
-  _REGION: 'us-central1'
-  _SERVICE_NAME: 'broker-performance-suite'
-
 # Images to be pushed to Container Registry
 images:
   - 'gcr.io/broker-performance-suite/my-app:$COMMIT_SHA'
